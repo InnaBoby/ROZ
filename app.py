@@ -19,20 +19,6 @@ model_enciclopedic = load_model_enciclopedic()
 prompt = "Учитывая следующий текст, определите, написан ли он в энциклопедическом стиле:\n\nТекст:"
 
 
-#модель для проверки соответствия Wiki-разметеке
-tokenizer_wiki = AutoTokenizer.from_pretrained('MediaWiki_classifier')
-@st.cache_resource
-def load_model_wiki():
-    model_wiki = AutoModelForSequenceClassification.from_pretrained('MediaWiki_classifier')
-    if torch.cuda.is_available():
-        model_wiki.cuda()
-    return model_wiki
-
-model_wiki = load_model_wiki()
-
-
-
-
 #модели для проверки нейтральности
 tokenizer_neutrality = AutoTokenizer.from_pretrained('cointegrated/rubert-tiny-sentiment-balanced')
 @st.cache_resource
