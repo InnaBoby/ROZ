@@ -5,12 +5,11 @@ from func import *
 
 
 #модели для проверки энциклопедичности
-tokenizer_enciclopedic = AutoTokenizer.from_pretrained("bert-base-uncased")
+tokenizer_enciclopedic = BertTokenizer.from_pretrained("bert-base-multilingual-cased")
 #декоратор для загрузки модели в кэш
 @st.cache_resource
 def load_model_enciclopedic():
-    model_enciclopedic = AutoModelForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
-    model_enciclopedic.load_state_dict(torch.load('weights_bert_with_val', map_location=torch.device(device)))
+    model_enciclopedic = BertForSequenceClassification.from_pretrained("bert-base-multilingual-cased", num_labels=2)
     if torch.cuda.is_available():
         model_enciclopedic.cuda()
     return model_enciclopedic
