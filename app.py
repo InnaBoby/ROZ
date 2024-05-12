@@ -1,6 +1,6 @@
 import streamlit as st
 from pyaspeller import YandexSpeller
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, BertTokenizer, BertForSequenceClassification
 from func import *
 
 
